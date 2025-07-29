@@ -1,4 +1,4 @@
-name: Build E-Leak APK
+name: Build Cordova APK
 
 on:
   push:
@@ -8,31 +8,34 @@ on:
 
 jobs:
   build:
-    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
+    - name: Install Cordova CLI
+      run: npm install -g cordova
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+    - name: Install project dependencies
+      run: npm install
 
-      - name: Build APK
-        run: ./gradlew assembleDebug
+    - name: Add Android platform
+      run: cordova platform add android
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: eleak-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+    - name: Make gradlew executable
+      run: chmod +x platforms/android/gradlew
 
+    - name: Build APK
+      run: cd platforms/android && ./gradlew assembleDebug
+
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: E-Leak-debug-apk
+        path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
