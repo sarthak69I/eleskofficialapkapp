@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,15 +17,19 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Cordova CLI
+      - name: Install Cordova
         run: npm install -g cordova
 
       - name: Install dependencies
         run: npm install
 
-      - name: Add Android platform (ignore if already added)
+      - name: Install Android Build Tools 33.0.2
         run: |
-          cordova platform add android || echo "Android platform already added"
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;33.0.2"
+
+      - name: Add Android platform (skip if exists)
+        run: |
+          cordova platform add android || echo "Platform already exists"
 
       - name: Build Android APK
         run: cordova build android --release
@@ -36,4 +39,3 @@ jobs:
         with:
           name: e-leak-apk
           path: platforms/android/app/build/outputs/apk/release/*.apk
-
