@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>E-Leak</title>
-    <style>
-      html, body { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-      iframe {
-        border: none;
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <script src="cordova.js"></script>
-    <script src="splash.js"></script>
-    <script src="firebase.analytics.js"></script>
-    <iframe src="https://e-leak.vercel.app" allow="autoplay; fullscreen"></iframe>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://e-leak-strm.web.app https://e-leak-in.vercel.app; 
+                 script-src 'self' https://www.gstatic.com https://www.google-analytics.com;
+                 style-src 'self' 'unsafe-inline';
+                 img-src 'self' data: https: blob:;
+                 connect-src *;
+                 frame-src 'self' https://e-leak-strm.web.app https://e-leak-in.vercel.app;
+                 media-src *;
+                 object-src 'none';" />
+  <title>E-Leak App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+    // Allow only specific URLs
+    const allowedOrigins = [
+      "https://e-leak-strm.web.app",
+      "https://e-leak-in.vercel.app"
+    ];
+
+    const mainURL = "https://e-leak-in.vercel.app/";
+
+    function isAllowedURL(url) {
+      return allowedOrigins.some(origin => url.startsWith(origin));
+    }
+
+    document.addEventListener('deviceready', () => {
+      const ref = cordova.InAppBrowser.open(mainURL, '_self', 'location=no,zoom=no,hardwareback=yes');
+
+      ref.addEventListener('loadstart', (event) => {
+        if (!isAllowedURL(event.url)) {
+          ref.close();
+          alert("This URL is not allowed in the app.");
+        }
+      });
+    }, false);
+  </script>
+
+  <script type="text/javascript" src="cordova.js"></script>
+</body>
 </html>
+

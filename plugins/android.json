@@ -55,6 +55,9 @@
       "ANDROID_FIREBASE_PERF_GRADLE_PLUGIN_VERSION": "1.4.2",
       "ANDROID_GRPC_OKHTTP": "1.68.0",
       "PACKAGE_NAME": "com.eleak.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.eleak.app"
     }
   },
   "dependent_plugins": {}

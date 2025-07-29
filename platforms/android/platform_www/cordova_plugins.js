@@ -220,6 +220,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "FirebasePlugin"
       ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -228,6 +236,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-inappbrowser": "6.0.0",
     "cordova-plugin-file": "8.1.3",
     "cordova-plugin-file-transfer": "2.0.0",
-    "cordova-plugin-firebasex": "18.0.7"
+    "cordova-plugin-firebasex": "18.0.7",
+    "cordova-plugin-statusbar": "4.0.0"
   };
 });
