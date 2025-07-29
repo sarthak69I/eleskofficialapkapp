@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.eleak.app" version="13.18.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>E-Leak</name>
+  <description>E-Leak learning app</description>
+  <author email="support@eleak.in" href="https://e-leak.vercel.app">E-Leak Studio</author>
+  <content src="index.html" />
+  <access origin="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-navigation href="*" />
+  <preference name="Fullscreen" value="true" />
+  <preference name="SplashScreen" value="screen" />
+  <preference name="SplashScreenDelay" value="2000" />
+  <preference name="ShowSplashScreen" value="true" />
+  <preference name="FadeSplashScreenDuration" value="500" />
+  <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+  <platform name="android">
+    <icon src="res/icon.png" />
+    <splash src="res/splash.png" density="port-mdpi" />
+  </platform>
+</widget>

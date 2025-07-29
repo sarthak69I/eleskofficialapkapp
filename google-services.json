@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495562275948",
+    "project_id": "linkup-eoxmn",
+    "storage_bucket": "linkup-eoxmn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495562275948:android:df19281de8eb39cc542c49",
+        "android_client_info": {
+          "package_name": "com.eleak.studio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtla8tYK02-3Fszuw0eQTmDnuyvPVecpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
